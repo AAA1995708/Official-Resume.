@@ -7,145 +7,208 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --primary: #6366f1;
+      --primary-hover: #4f46e5;
+      --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+      --glass: rgba(255, 255, 255, 0.85);
+      --glass-border: rgba(255, 255, 255, 0.5);
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
     
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      background: #fafafa;
-      color: #1a1a1a;
+      background: var(--bg-gradient);
+      color: #1f2937;
       min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       line-height: 1.6;
+      overflow-x: hidden;
     }
-    
+
+    /* Background accent elements */
+    .blob {
+      position: absolute;
+      width: 450px;
+      height: 450px;
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+      filter: blur(90px);
+      border-radius: 50%;
+      z-index: -1;
+      opacity: 0.12;
+      animation: float 25s infinite alternate ease-in-out;
+    }
+
+    @keyframes float {
+      from { transform: translate(-15%, -15%) scale(1); }
+      to { transform: translate(15%, 15%) scale(1.1); }
+    }
+
     .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 60px 24px;
+      max-width: 480px;
+      width: 90%;
+      margin: 24px auto;
+      padding: 56px 40px;
+      background: var(--glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--glass-border);
+      border-radius: 40px;
+      box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.08);
       text-align: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+    }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
     }
     
     .avatar {
-      width: 100px;
-      height: 100px;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      border-radius: 50%;
+      width: 96px;
+      height: 96px;
+      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+      border-radius: 28px;
       margin: 0 auto 32px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 36px;
       color: white;
-      font-weight: 600;
+      font-weight: 700;
+      box-shadow: 0 12px 24px rgba(99, 102, 241, 0.25);
+      transform: rotate(-2deg);
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .container:hover .avatar {
+      transform: rotate(0deg) scale(1.08);
     }
     
     h1 {
-      font-size: 32px;
-      font-weight: 700;
+      font-size: 30px;
+      font-weight: 800;
       margin-bottom: 8px;
-      letter-spacing: -0.5px;
+      letter-spacing: -1.2px;
+      color: #111827;
     }
     
     .tagline {
-      font-size: 18px;
-      color: #666;
+      font-size: 14px;
+      color: var(--primary);
       margin-bottom: 24px;
-      font-weight: 400;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
     
     .bio {
       font-size: 16px;
-      color: #444;
+      color: #4b5563;
       margin-bottom: 40px;
-      max-width: 480px;
-      margin-left: auto;
-      margin-right: auto;
-      line-height: 1.7;
+      line-height: 1.8;
+      font-weight: 400;
     }
     
     .download-btn {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
-      background: #1a1a1a;
+      justify-content: center;
+      gap: 14px;
+      background: #111827;
       color: white;
-      padding: 16px 32px;
-      border-radius: 50px;
+      width: 100%;
+      padding: 20px;
+      border-radius: 20px;
       text-decoration: none;
-      font-size: 16px;
-      font-weight: 500;
-      transition: all 0.3s ease;
+      font-size: 17px;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       margin-bottom: 32px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     
     .download-btn:hover {
-      background: #333;
-      transform: translateY(-2px);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      background: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(99, 102, 241, 0.35);
+    }
+
+    .download-btn:active {
+      transform: translateY(-1px);
     }
     
     .download-btn svg {
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
     }
     
     .contact {
       display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 16px;
-      margin-bottom: 48px;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 40px;
     }
     
-    .contact a {
+    .contact-item {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      color: #666;
+      justify-content: center;
+      gap: 10px;
+      color: #6b7280;
       text-decoration: none;
-      font-size: 14px;
-      transition: color 0.2s;
+      font-size: 15px;
+      padding: 14px;
+      background: rgba(0,0,0,0.03);
+      border-radius: 16px;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
     }
     
-    .contact a:hover {
-      color: #1a1a1a;
+    .contact-item:hover {
+      background: white;
+      color: var(--primary);
+      border-color: rgba(99, 102, 241, 0.2);
+      transform: scale(1.02);
     }
     
-    .divider {
-      width: 60px;
-      height: 1px;
-      background: #ddd;
-      margin: 0 auto 32px;
-    }
-    
-    .message {
-      font-size: 14px;
-      color: #888;
-      font-style: italic;
+    .footer-text {
+      font-size: 13px;
+      color: #9ca3af;
+      font-weight: 500;
+      letter-spacing: 0.5px;
     }
     
     @media (max-width: 480px) {
-      .container { padding: 40px 20px; }
+      .container { 
+        padding: 40px 24px;
+        margin: 16px;
+        width: calc(100% - 32px);
+      }
       h1 { font-size: 26px; }
-      .tagline { font-size: 16px; }
-      .bio { font-size: 15px; }
-      .contact { flex-direction: column; gap: 12px; }
+      .blob { width: 250px; height: 250px; }
     }
   </style>
 </head>
 <body>
+  <div class="blob" style="top: 5%; left: 5%;"></div>
+  <div class="blob" style="bottom: 5%; right: 5%; background: linear-gradient(135deg, #f472b6 0%, #6366f1 100%);"></div>
+
   <div class="container">
     <div class="avatar">A</div>
     
     <h1>Asadullah Al Yasin</h1>
-    <p class="tagline">Ready to work. Ready to learn. Ready to grow.</p>
+    <p class="tagline">Ready to grow</p>
     
     <p class="bio">
-      I'm not here to just "get a job" — I'm here to prove myself. 
-      I show up early, I work hard, and I don't stop until the job is done right. 
+      I'm here to prove myself. I show up early, I work hard, and I don't stop until the job is done right. 
       Give me a chance, and I'll give you everything I've got.
     </p>
     
-    <!-- Updated the link to point to your actual PDF file -->
     <a class="download-btn" href="Asadullah_Al_Yasin_Resume.pdf" download="Asadullah_Al_Yasin_Resume.pdf">
       <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
@@ -154,14 +217,18 @@
     </a>
     
     <div class="contact">
-      <a href="tel:+19053790761">📞 +1 (905) 379-0761</a>
-      <a href="mailto:alyasinasad.aa@gmail.com">✉️ alyasinasad.aa@gmail.com</a>
-      <span>📍 Grimsby, ON</span>
+      <a href="tel:+19053790761" class="contact-item">
+        <span>📞</span> +1 (905) 379-0761
+      </a>
+      <a href="mailto:alyasinasad.aa@gmail.com" class="contact-item">
+        <span>✉️</span> alyasinasad.aa@gmail.com
+      </a>
+      <div class="contact-item">
+        <span>📍</span> Grimsby, ON
+      </div>
     </div>
     
-    <div class="divider"></div>
-    
-    <p class="message">Let's build something together.</p>
+    <p class="footer-text">Built with focus and dedication.</p>
   </div>
 </body>
 </html>
