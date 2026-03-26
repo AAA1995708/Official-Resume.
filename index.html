@@ -3,13 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Asadullah Al Yasin</title>
+  <title>Asad Al Yasin</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #6366f1;
-      --primary-hover: #4f46e5;
       --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
       --glass: rgba(255, 255, 255, 0.85);
       --glass-border: rgba(255, 255, 255, 0.5);
@@ -29,7 +28,6 @@
       overflow-x: hidden;
     }
 
-    /* Background accent elements */
     .blob {
       position: absolute;
       width: 450px;
@@ -59,19 +57,12 @@
       border-radius: 40px;
       box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.08);
       text-align: center;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: fadeInUp 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-    }
-
-    @keyframes fadeInUp {
-      to { opacity: 1; transform: translateY(0); }
     }
     
     .avatar {
       width: 96px;
       height: 96px;
-      background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%);
+      background: #111827;
       border-radius: 28px;
       margin: 0 auto 32px;
       display: flex;
@@ -80,13 +71,6 @@
       font-size: 36px;
       color: white;
       font-weight: 700;
-      box-shadow: 0 12px 24px rgba(99, 102, 241, 0.25);
-      transform: rotate(-2deg);
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .container:hover .avatar {
-      transform: rotate(0deg) scale(1.08);
     }
     
     h1 {
@@ -110,8 +94,6 @@
       font-size: 16px;
       color: #4b5563;
       margin-bottom: 40px;
-      line-height: 1.8;
-      font-weight: 400;
     }
     
     .download-btn {
@@ -127,24 +109,38 @@
       text-decoration: none;
       font-size: 17px;
       font-weight: 600;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all 0.3s ease;
       margin-bottom: 32px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
     
     .download-btn:hover {
       background: var(--primary);
       transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(99, 102, 241, 0.35);
     }
 
-    .download-btn:active {
-      transform: translateY(-1px);
+    .qr-container {
+      margin-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    
-    .download-btn svg {
-      width: 24px;
-      height: 24px;
+
+    .qr-label {
+      font-size: 12px;
+      font-weight: 700;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 12px;
+    }
+
+    .qr-code {
+      width: 120px;
+      height: 120px;
+      padding: 10px;
+      background: white;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.05);
     }
     
     .contact {
@@ -165,43 +161,22 @@
       padding: 14px;
       background: rgba(0,0,0,0.03);
       border-radius: 16px;
-      transition: all 0.2s ease;
-      border: 1px solid transparent;
-    }
-    
-    .contact-item:hover {
-      background: white;
-      color: var(--primary);
-      border-color: rgba(99, 102, 241, 0.2);
-      transform: scale(1.02);
     }
     
     .footer-text {
       font-size: 13px;
       color: #9ca3af;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-    }
-    
-    @media (max-width: 480px) {
-      .container { 
-        padding: 40px 24px;
-        margin: 16px;
-        width: calc(100% - 32px);
-      }
-      h1 { font-size: 26px; }
-      .blob { width: 250px; height: 250px; }
     }
   </style>
 </head>
 <body>
   <div class="blob" style="top: 5%; left: 5%;"></div>
-  <div class="blob" style="bottom: 5%; right: 5%; background: linear-gradient(135deg, #f472b6 0%, #6366f1 100%);"></div>
+  <div class="blob" style="bottom: 5%; right: 5%;"></div>
 
   <div class="container">
     <div class="avatar">A</div>
     
-    <h1>Asadullah Al Yasin</h1>
+    <h1>Asad Al Yasin</h1>
     <p class="tagline">Ready to grow</p>
     
     <p class="bio">
@@ -209,23 +184,19 @@
       Give me a chance, and I'll give you everything I've got.
     </p>
     
-    <a class="download-btn" href="Asadullah_Al_Yasin_Resume.pdf" download="Asadullah_Al_Yasin_Resume.pdf">
-      <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
-      </svg>
+    <a class="download-btn" href="Asadullah_Al_Yasin_Resume.pdf" download>
       Download My Resume
     </a>
+
+    <div class="qr-container">
+      <p class="qr-label">Scan for digital resume & contact info</p>
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://yourwebsite.com" alt="QR Code" class="qr-code">
+    </div>
     
     <div class="contact">
-      <a href="tel:+19053790761" class="contact-item">
-        <span>📞</span> +1 (905) 379-0761
-      </a>
-      <a href="mailto:alyasinasad.aa@gmail.com" class="contact-item">
-        <span>✉️</span> alyasinasad.aa@gmail.com
-      </a>
-      <div class="contact-item">
-        <span>📍</span> Grimsby, ON
-      </div>
+      <a href="tel:+19053790761" class="contact-item">📞 +1 (905) 379-0761</a>
+      <a href="mailto:alyasinasad.aa@gmail.com" class="contact-item">✉️ Email Me</a>
+      <div class="contact-item">📍 Grimsby, ON</div>
     </div>
     
     <p class="footer-text">Built with focus and dedication.</p>
