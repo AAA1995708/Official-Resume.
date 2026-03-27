@@ -1,6 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <!-- 🔐 ACCESS CONTROL: Delete this entire <script> block to show the page -->
+  <script>
+    // To show content: change false → true BELOW, or simply DELETE this whole <script> block
+    var GRANT_ACCESS = false;
+    if (!GRANT_ACCESS) {
+      // Hide page content immediately during load
+      document.documentElement.style.setProperty('display', 'none', 'important');
+      // Optional: private note for you in browser console (F12 → Console)
+      console.log('🔒 Page hidden. To view: set GRANT_ACCESS = true or remove this script block.');
+    }
+  </script>
+  <!-- 🔐 END ACCESS CONTROL -->
+
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Asad Al Yasin | Professional Profile</title>
@@ -260,3 +273,4 @@
   </div>
 </body>
 </html>
+
